@@ -15,7 +15,7 @@ import android.widget.GridView;
 
 /**
  * A fragment representing a single Picture detail screen. This fragment is
- * either contained in a {@link CategoryListActivity} in two-pane mode (on
+ * either contained in a {@link The500PxActivity} in two-pane mode (on
  * tablets) or a {@link CategoryImageListActivity} on handsets.
  */
 public class CategoryImageListFragment extends Fragment {

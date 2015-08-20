@@ -11,7 +11,7 @@ import android.view.MenuItem;
 /**
  * An activity representing a single Picture detail screen. This activity is
  * only used on handset devices. On tablet-size devices, item details are
- * presented side-by-side with a list of items in a {@link CategoryListActivity}
+ * presented side-by-side with a list of items in a {@link The500PxActivity}
  * .
  * <p>
  * This activity is mostly just a 'shell' activity containing nothing more than
@@ -63,7 +63,7 @@ public class CategoryImageListActivity extends FragmentActivity {
 			// http://developer.android.com/design/patterns/navigation.html#up-vs-back
 			//
 			NavUtils.navigateUpTo(this, new Intent(this,
-					CategoryListActivity.class));
+					The500PxActivity.class));
 			return true;
 		}
 		return super.onOptionsItemSelected(item);

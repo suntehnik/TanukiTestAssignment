@@ -2,7 +2,9 @@ package org.dvaletin.apps.tanukitestassignment;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
+
+import org.dvaletin.apps.tanukitestassignment.inject.InjectAppCompatActivity;
 
 /**
  * An activity representing a list of WebImages. This activity has different
@@ -20,7 +22,7 @@ import android.support.v4.app.FragmentActivity;
  * {@link CategoryListFragment.Callbacks} interface to listen for item
  * selections.
  */
-public class CategoryListActivity extends FragmentActivity implements
+public class The500PxActivity extends InjectAppCompatActivity implements
 		CategoryListFragment.Callbacks {
 
 	/**
