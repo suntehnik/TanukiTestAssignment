@@ -16,6 +16,7 @@ public class The500pxApplication extends Application {
 
     public void onCreate() {
         super.onCreate();
+        RoboGuice.setUseAnnotationDatabases(false);
         RoboGuice.getOrCreateBaseApplicationInjector(this, RoboGuice.DEFAULT_STAGE, RoboGuice.newDefaultRoboModule(this), new CustomInjectModule());
     }
 

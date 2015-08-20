@@ -22,6 +22,7 @@ public class Prod500pxRestConfigurationTest extends ApplicationTestCase<The500px
     @Override
     protected void setUp() throws Exception {
         super.setUp();
+        createApplication();
     }
 
     public void testGetServerUrlNotNull() throws Exception {
