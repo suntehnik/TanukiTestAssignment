@@ -37,4 +37,12 @@ public class Prod500pxRestConfigurationTest extends ApplicationTestCase<The500px
         URI uri = new URI(configuration.getServerUrl());
         assertNotNull(uri);
     }
+
+    public void testGetConsumerKeyIsNotEmpty() throws Exception {
+        assertNotNull(getApplication());
+        final IRestConfiguration configuration = RoboGuice.getInjector(getApplication()).getInstance(IRestConfiguration.class);
+        String consumerKey = configuration.getConsumerKey();
+        assertNotNull(consumerKey);
+        assertFalse(TextUtils.isEmpty(consumerKey));
+    }
 }

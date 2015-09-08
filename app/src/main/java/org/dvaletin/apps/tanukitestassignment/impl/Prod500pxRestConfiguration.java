@@ -16,6 +16,7 @@ public class Prod500pxRestConfiguration implements IRestConfiguration {
     private static final String REST_SERVER_NAME = "api.500px.com";
     private static final String REST_PORT = "";
     private static final String REST_BASE_PATH = "v1";
+    private static final String CONSUMER_KEY = "h74gf2glk3F3BcXggtDupLnPX93UPu7zmdPKrgPK";
 
     @Inject
     public Prod500pxRestConfiguration() {}
@@ -55,5 +56,10 @@ public class Prod500pxRestConfiguration implements IRestConfiguration {
         if (!TextUtils.isEmpty(getUriBasePath()))
             serverUrlBuilder.append(getUriBasePath());
         return serverUrlBuilder.toString();
+    }
+
+    @Override
+    public String getConsumerKey() {
+        return CONSUMER_KEY;
     }
 }

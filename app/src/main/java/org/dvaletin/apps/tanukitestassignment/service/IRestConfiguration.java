@@ -11,4 +11,6 @@ public interface IRestConfiguration {
     public String getUriBasePath();
 
     public String getServerUrl();
+
+    public String getConsumerKey();
 }

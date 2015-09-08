@@ -9,7 +9,7 @@ import bolts.Task;
 /**
  * Created by dvaletin on 26.06.15.
  */
-public interface ICategoryManager {
+public interface IPhotoManager {
 
-    Task<List<Picture>> getImagesByCategory(int categoryId);
+    Task<List<Picture>> getPhotosByCategory(int categoryId);
 }

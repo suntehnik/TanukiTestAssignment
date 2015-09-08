@@ -4,7 +4,15 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 
+import com.google.inject.Inject;
+
 import org.dvaletin.apps.tanukitestassignment.inject.InjectAppCompatActivity;
+import org.dvaletin.apps.tanukitestassignment.presenters.ICategoryPresenter;
+import org.dvaletin.apps.tanukitestassignment.service.IRestConfiguration;
+import org.dvaletin.apps.tanukitestassignment.views.ICategoryView;
+
+import roboguice.inject.ContentView;
+import roboguice.inject.InjectView;
 
 /**
  * An activity representing a list of WebImages. This activity has different
@@ -22,8 +30,12 @@ import org.dvaletin.apps.tanukitestassignment.inject.InjectAppCompatActivity;
  * {@link CategoryListFragment.Callbacks} interface to listen for item
  * selections.
  */
+@ContentView(R.layout.drawer_layout)
 public class The500PxActivity extends InjectAppCompatActivity implements
-		CategoryListFragment.Callbacks {
+		CategoryListFragment.Callbacks, ICategoryView {
+
+	@Inject
+	private ICategoryPresenter presenter;
 
 	/**
 	 * Whether or not the activity is in two-pane mode, i.e. running on a tablet
@@ -34,7 +46,8 @@ public class The500PxActivity extends InjectAppCompatActivity implements
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_webimage_list);
+        presenter.setView(this);
+//		setContentView(R.layout.activity_webimage_list);
 
 		if (findViewById(R.id.webimage_detail_container) != null) {
 			// The detail container view will be present only in the
@@ -59,12 +72,17 @@ public class The500PxActivity extends InjectAppCompatActivity implements
 	 */
 	@Override
 	public void onItemSelected(int id) {
+		presenter.onCategoryItemSelected(id);
+	}
+
+	@Override
+	public void onCategorySelected(int categoryId) {
 		if (mTwoPane) {
 			// In two-pane mode, show the detail view in this activity by
 			// adding or replacing the detail fragment using a
 			// fragment transaction.
 			Bundle arguments = new Bundle();
-			arguments.putInt(CategoryImageListFragment.ARG_ITEM_ID, id);
+			arguments.putInt(CategoryImageListFragment.ARG_ITEM_ID, categoryId);
 			CategoryImageListFragment fragment = new CategoryImageListFragment();
 			fragment.setArguments(arguments);
 			getSupportFragmentManager().beginTransaction()
@@ -74,7 +92,7 @@ public class The500PxActivity extends InjectAppCompatActivity implements
 			// In single-pane mode, simply start the detail activity
 			// for the selected item ID.
 			Intent detailIntent = new Intent(this, CategoryImageListActivity.class);
-			detailIntent.putExtra(CategoryImageListFragment.ARG_ITEM_ID, id);
+			detailIntent.putExtra(CategoryImageListFragment.ARG_ITEM_ID, categoryId);
 			startActivity(detailIntent);
 		}
 	}
